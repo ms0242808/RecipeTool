@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+  <html>
+    <head>
+      <meta charset="UTF-8">
+      <title>DrinkTec</title>
+      <!-- Bootstrap CSS -->
+      <link rel="stylesheet" href="../../node_modules/bootstrap/dist/css/bootstrap.min.css" />
+      <link rel="stylesheet" href="../../node_modules/bootstrap-table/dist/bootstrap-table.min.css" />
+      <script src="../../node_modules/bootstrap-table/dist/bootstrap-table.min.js"></script>
+      <!-- Bootstrap Optional JavaScript -->
+      <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+      <script>let $ = require('jquery');</script>
+      <script>require('popper.js');</script>
+      <script>require('bootstrap');</script>
+      <!--script src="node_modules/file-saverjs/FileSaver.min.js"></script>
+      <script src="node_modules/tableexport/node_modules/xlsx/dist/xlsx.core.min.js"></script>
+      <script src="node_modules/tableexport/src/stable/js/tableexport.js"></script-->
+      <meta http-equiv="Content-Security-Policy" content="script-src 'self' 'unsafe-inline';" />
+    </head>
+    <body>
+        <div id="addIn">
+          <input value="Add value to excel only one row one cell" type="text" id="j">
+          <a onclick="AddInput()" class="btn btn-primary">Add input</a>
+        </div>
+
+        <a onclick="createNewExcelFile()" class="btn btn-primary">Create excel file</a>
+        
+        <a onclick="readExcelFile()" class="btn btn-primary">Read excel file</a>
+        
+        <a onclick="saveFile()" class="btn btn-primary">Save file</a>
+        
+        <a onclick="readIntoTab()" class="btn btn-primary">Tab view</a>
+        
+        <a onclick="readIntoCard()" class="btn btn-primary">Card view</a>
+
+        <a onclick="converToCsv()" class="btn btn-primary">Convert to CSV</a>
+
+        <a onclick="converToTxt()" class="btn btn-primary">Convert to TXT</a>
+
+        <div id="recipeTable">
+          <!--div id="exportBtn"></div-->
+        </div>
+
+        <div id="recipeTab"></div>
+
+        <div class="row" id="cardView"></div>        
+        
+        <!--a onclick="exportFile('receiptable')" class="btn btn-primary">Export file</a-->
+    </body>
+    
+    <script src="../js/CreateExcel.js"></script>
+    <script src="../js/ReadExcel.js"></script>
+    <!--script src="src/ExportExcel.js"></script-->
+    <script> 
+      $(document).ready(function(){
+        readIntoCard();
+      });
+
+      const fs = require('fs');
+      function converToCsv(){
+        fs.rename('Recipe.txt', 'RecipeConverted.csv',(err) => {
+          if (err) throw err;
+          console.log('Rename complete!');
+        });
+      }
+
+      function converToTxt(){
+        var iconv = require("iconv-lite");
+        fs.createReadStream("Recipe.csv")
+          .pipe(iconv.decodeStream("utf8"))
+          .pipe(iconv.encodeStream("utf16-be"))
+          .pipe(fs.createWriteStream("Recipe.txt"));
+      }
+
+      function editRecipe(x){
+        var recipe = document.getElementById(x.id).textContent;
+        sessionStorage.setItem("recipeTitle", recipe);
+      }
+
+      var x = 1;      
+      function AddInput(){
+        var html = '';
+            html += '<div id="inputFormRow">';
+            html += '<input value="Drink name '+x+'" type="text" id="js">';
+            html += '<a id="removeRow" class="btn btn-danger">Remove</a>';            
+            html += '</div>';
+            $('#addIn').append(html);
+            x ++;
+      }
+      
+      $(document).on('click', '#removeRow', function () {
+        $(this).closest('#inputFormRow').remove();
+      });
+    </script>
+    <style>
+      *{
+        margin: 6px !important;
+      }
+      
+      body{
+        background-color: beige !important;
+      }
+
+      .data{
+        border:none;
+      }
+    </style>
+  </html>

@@ -1,0 +1,368 @@
+<div class="mx-auto row" style="margin-top:50px; margin-right: 0;">
+    <div class="col-md-4 pl-5">
+        <ul class="list-group list-group-flush">
+            <h5 class="title">Create Recipe</h5>
+            <li onclick="showPrev(1)" class="list-group-item" id="step01" style="color:#2760A3;font-weight: bold;">01. Enter Tea/Liquid name</li>
+            <li class="list-group-item" id="step02" style="color:#707070">02. Enter Drink name</li>
+            <li class="list-group-item" id="step03" style="color:#707070">03. Finished</li>
+        </ul>
+    </div>
+    <div class="col-md-4 offset-md-4 textCenter">
+        <img src="src/img/Logo color 1.png" class="logoImg">
+    </div>
+</div>
+<div class="mx-auto" style="width:600px;margin-top:50px">
+    <div class="container" hidden>
+        <div class="row pl-110">
+            <div class="col-2">
+                <p class="steps">1</p>
+            </div>
+            <div class="col-2">
+                <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-three-dots" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                    <path fill-rule="evenodd" d="M3 9.5a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3zm5 0a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3zm5 0a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3z"/>
+                </svg>
+            </div>
+            <div class="col-2">
+                <p class="steps2">2</p>
+            </div>
+            <div class="col-2">
+                <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-three-dots" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                    <path fill-rule="evenodd" d="M3 9.5a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3zm5 0a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3zm5 0a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3z"/>
+                </svg>
+            </div>
+            <div class="col-2">
+                <p class="steps2">3</p>
+            </div>
+        </div>
+    </div>
+    <div class="container step">
+        <div class="row pl-110">
+            <div class="col">
+                <p class="title">Please enter tea/liquid name that you are using</p>
+            </div>
+        </div>
+        <div class="row textCenter">
+            <div class="col">
+                <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-info-circle-fill" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                    <path fill-rule="evenodd" d="M8 16A8 8 0 1 0 8 0a8 8 0 0 0 0 16zm.93-9.412l-2.29.287-.082.38.45.083c.294.07.352.176.288.469l-.738 3.468c-.194.897.105 1.319.808 1.319.545 0 1.178-.252 1.465-.598l.088-.416c-.2.176-.492.246-.686.246-.275 0-.375-.193-.304-.533L8.93 6.588zM8 5.5a1 1 0 1 0 0-2 1 1 0 0 0 0 2z"/>
+                </svg>
+                <a>Milk, water and sugar are already included</a>
+            </div>
+        </div>
+        <div class="row textCenter mt-20">
+            <div class="col">
+                <a>Tea & Liquid: <a class="teaCount">1</a>/10</a>
+            </div>
+        </div>
+        <div class="teaName">
+            <div class="row mt-20">
+                <div class="col pl-110">
+                    <a class="teaNum">1. </a><input type="text" class="form-control teaN" placeholder="Tea/Liquid name" aria-label="Tea/Liquid name" aria-describedby="basic-addon1">
+                    <!-- <a class="iconBtn" onclick="AddInput(1)">
+                        <svg width="20px" height="20px" viewBox="0 0 16 16" class="bi bi-plus-circle-fill" fill="#05B448" xmlns="http://www.w3.org/2000/svg">
+                            <path fill-rule="evenodd" d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM8.5 4.5a.5.5 0 0 0-1 0v3h-3a.5.5 0 0 0 0 1h3v3a.5.5 0 0 0 1 0v-3h3a.5.5 0 0 0 0-1h-3v-3z"/>
+                        </svg>
+                    </a> -->
+                </div>
+            </div>
+        </div>
+        <div class="row textCenter mt-20">
+            <div class="col align-self-center">
+                <button onclick="AddInput(1)" class="teaStep btn btn-outline-success">Add
+                    <svg width="20px" height="20px" viewBox="0 0 18 18" class="bi bi-plus" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                        <path fill-rule="evenodd" d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4z"/>
+                      </svg>
+                </button>
+            </div>
+        </div>
+        <div class="row textCenter mt-20">
+            <div class="col align-self-center">
+                <a onclick="showNext(1)" class="teaStep btn btn-outline-primary">Next
+                    <svg width="20px" height="20px" viewBox="0 0 18 18" class="bi bi-arrow-right-short" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                        <path fill-rule="evenodd" d="M4 8a.5.5 0 0 1 .5-.5h5.793L8.146 5.354a.5.5 0 1 1 .708-.708l3 3a.5.5 0 0 1 0 .708l-3 3a.5.5 0 0 1-.708-.708L10.293 8.5H4.5A.5.5 0 0 1 4 8z"/>
+                    </svg>
+                </a>
+            </div>
+        </div>
+        <div class="row textCenter mt-20">
+            <div class="col align-self-center">
+                <a class="btn btn-outline-info" data-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">
+                    Example
+                    <svg width="20px" height="20px" viewBox="0 0 18 18" class="bi bi-list" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                        <path fill-rule="evenodd" d="M2.5 11.5A.5.5 0 0 1 3 11h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4A.5.5 0 0 1 3 7h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4A.5.5 0 0 1 3 3h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5z"/>
+                    </svg>
+                </a>
+                <div class="collapse" id="collapseExample">
+                    <div class="mt-20 pl-110">
+                        <input readonly type="text" class="form-control" placeholder="Wintermelon" aria-label="Tea/Liquid name" aria-describedby="basic-addon1">
+                    </div>
+                    <div class="mt-20 pl-110">
+                        <input readonly type="text" class="form-control" placeholder="Black Tea" aria-label="Tea/Liquid name" aria-describedby="basic-addon1">
+                    </div>
+                    <div class="mt-20 pl-110">
+                        <input readonly type="text" class="form-control" placeholder="Oolong Tea" aria-label="Tea/Liquid name" aria-describedby="basic-addon1">
+                    </div>
+                </div>
+            </div>  
+        </div>
+    </div>
+    <div class="container step" style="display: none;">
+        <div class="row pl-110">
+            <div class="col">
+                <p class="title">Please enter the drink name</p>
+            </div>
+        </div>
+        <div class="row textCenter">
+            <div class="col">
+                <a>Drink: <a class="drinkCount">1</a></a>
+            </div>
+        </div>
+        <div class="drinkName">
+            <div class="row mt-20">
+                <div class="col pl-110">
+                    <input type="text" class="form-control drinkN" placeholder="Drink name" aria-label="Drink name" aria-describedby="basic-addon1">
+                    <a class="iconBtn" onclick="AddInput(2)">
+                        <svg width="20px" height="20px" viewBox="0 0 16 16" class="bi bi-plus-circle-fill" fill="#05B448" xmlns="http://www.w3.org/2000/svg">
+                            <path fill-rule="evenodd" d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM8.5 4.5a.5.5 0 0 0-1 0v3h-3a.5.5 0 0 0 0 1h3v3a.5.5 0 0 0 1 0v-3h3a.5.5 0 0 0 0-1h-3v-3z"/>
+                        </svg>
+                    </a>
+                </div>
+            </div>
+        </div>
+        <div class="row textCenter mt-20">
+            <div class="col align-self-center">
+                <a onclick="generateFile()" class="drinkStep btn btn-outline-primary">Submit</a>
+            </div>    
+        </div>
+        <div class="row textCenter mt-20">
+            <div class="col align-self-center">
+                <a class="btn btn-outline-info" data-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">
+                    Example
+                    <svg width="20px" height="20px" viewBox="0 0 18 18" class="bi bi-list" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                        <path fill-rule="evenodd" d="M2.5 11.5A.5.5 0 0 1 3 11h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4A.5.5 0 0 1 3 7h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4A.5.5 0 0 1 3 3h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5z"/>
+                    </svg>
+                </a>
+                <div class="collapse" id="collapseExample">
+                    <div class="mt-20 pl-110">
+                        <input readonly type="text" class="form-control" placeholder="Fresh Milk Tea" aria-label="Drink name" aria-describedby="basic-addon1">
+                    </div>
+                    <div class="mt-20 pl-110">
+                        <input readonly type="text" class="form-control" placeholder="Pure Black Tea" aria-label="Drink name" aria-describedby="basic-addon1">
+                    </div>
+                    <div class="mt-20 pl-110">
+                        <input readonly type="text" class="form-control" placeholder="Wintermelon Milk Tea" aria-label="Drink name" aria-describedby="basic-addon1">
+                    </div>
+                </div>
+            </div>  
+        </div>
+    </div>
+    <div class="container step" style="display: none;">
+        <div class="row textCenter mt-20">
+            <div class="col">
+                Congratulations! All set!!
+            </div>
+        </div>
+        <div class="row textCenter mt-20">
+            <div class="col">
+                Go ahead to edit your recipe
+            </div>
+        </div>
+        <div class="row textCenter mt-20">
+            <div class="col">
+                <svg width="3em" height="3em" viewBox="0 0 16 16" class="bi bi-check-circle-fill" fill="#05B448" xmlns="http://www.w3.org/2000/svg">
+                    <path fill-rule="evenodd" d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zm-3.97-3.03a.75.75 0 0 0-1.08.022L7.477 9.417 5.384 7.323a.75.75 0 0 0-1.06 1.06L6.97 11.03a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 0 0-.01-1.05z"/>
+                </svg>
+            </div>
+        </div>
+        <div class="row textCenter mt-20">
+            <div class="col align-self-center">
+                <a onclick="lbtn('read')" class="btn btn-outline-primary">EDIT RECIPE</a>
+            </div>    
+        </div>
+    </div>
+</div>
+
+<script>
+var x = 0;
+var y = 0;
+function AddInput(step){
+    var currentStep;
+    var currentDiv;
+    var nameInput;
+    if(step == 1){
+        currentStep = "Tea/Liquid name";
+        currentDiv = ".teaName";
+        nameInput = "teaN";
+        x = $("."+nameInput).length;
+    }else if(step == 2){
+        currentStep = "Drink name";
+        currentDiv= ".drinkName";
+        nameInput = "drinkN";
+        x = $("."+nameInput).length;
+    }
+    if(x < 10 && step == 1){
+        // console.log("x"+x);
+        // console.log("y"+y);
+        createInput(currentStep,x,nameInput,step,currentDiv);//console.log($("."+nameInput).length);
+        $('.teaCount').text(parseInt(x)+1);
+    }else if(step == 2){
+        createInput(currentStep,x,nameInput,step,currentDiv);//console.log($("."+nameInput).length);
+        $('.drinkCount').text(parseInt(x)+1);
+    }else{
+        // alert("Maximum is 10");
+        $('.btn-outline-success').prop('disabled',true);
+    }
+}
+
+function createInput(a,b,c,d,e){
+    var html = '';
+    html += '<div id="inputFormRow" class="row mt-20">';
+    html += '<div class="col pl-110">';
+    html += '<a class="teaNum">'+parseInt(b+1)+'. </a>';
+    html += '<input id="'+a+b+'" type="text" class="form-control '+c+'" placeholder="'+a+'" aria-label="'+a+'" aria-describedby="basic-addon1">';
+    html += '<a class="iconBtn" id="removeRow"><svg width="20px" height="20px" viewBox="0 0 16 16" class="bi bi-dash-circle-fill" fill="#B40505" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM4.5 7.5a.5.5 0 0 0 0 1h7a.5.5 0 0 0 0-1h-7z"/></svg></a>';
+    html += '</div>';          
+    html += '</div>';
+    $(e).append(html);
+}
+
+$(document).on('click', '#removeRow', function () {
+    $(this).closest('#inputFormRow').remove();
+    var z = $(this).siblings('input').get(0).id
+    if(z.includes('Tea') ){
+        $('.teaCount').text($(".teaN").length);
+        $('.teaNum').text($(".teaN").length);
+    }else{
+        $('.drinkCount').text($(".drinkN").length);
+        $('.drinkNum').text($(".teaN").length);
+    }
+    //console.log("drink "+$(".drinkN").length);
+});
+
+$(document).on('click', '.teaStep', function () {//drinkStep
+    $('.teaN').each(function(index, item){
+        var val = $(item).val();
+        // var id = $(item).attr('id');
+        //console.log(val);
+    });
+});
+
+function generateFile(){
+    //create excel
+    createRecipeFile();
+    //show loading bar
+    //show next tab
+    showNext(2);
+}
+
+function showNext(n) {
+    var x = document.getElementsByClassName("step");
+    x[n].style.display = "block";
+    x[n-1].style.display = "none";
+    n += 1;
+    $("#step0"+n).css({"color": "#2760A3", "font-weight": "bold"});
+    n -= 1;
+    $("#step0"+n).css({"color": "#707070", "font-weight": "bold"});
+}
+
+function showPrev(n) {
+    var x = document.getElementsByClassName("step");
+    x[n].style.display = "none";
+    x[n-1].style.display = "block";
+    $("#step0"+n).css({"color": "#2760A3", "font-weight": "bold"});
+    n += 1;
+    $("#step0"+n).css({"color": "#707070", "font-weight": "bold"});
+}
+
+function validateForm() {
+    for (i = 0; i < y.length; i++) {
+        if (y[i].value == "") {
+            y[i].className += " invalid";
+            valid = false;
+        }
+    }
+    if (valid) {
+        document.getElementsByClassName("step")[currentTab].className += " finish";
+    }
+    return valid;
+}
+</script>
+<style>
+.count{
+    float: left;
+    padding-top: 8px;
+}
+
+.list-group-item{
+    padding: 0.25rem 1.25rem;
+}
+
+.list-group-flush>.list-group-item{
+    border-width: 0 0 0;
+}
+
+.steps{
+    border-style: solid;
+    border-color: #2d2d2d;
+    background-color: #2d2d2d;
+    border-radius: 30px;
+    border-width: 2px;
+    line-height: 26px;
+    width: 30px;
+    color: white;
+    text-align: center;
+    box-shadow: 0 1px 1px 0px #2d2d2d;
+}
+
+.steps2{
+    border-style: solid;
+    border-color: #2d2d2d;
+    border-radius: 30px;
+    border-width: 2px;
+    line-height: 26px;
+    width: 30px;
+    text-align: center;
+}
+
+.btn{
+    border-radius: 30px;
+    width: 150px;
+    font-weight: bold;
+}
+
+.btn:hover{
+    background: #0081C8;
+}
+
+.btn-outline-info:hover{
+    background: #17a2b8;
+}
+
+.btn-outline-success:hover{
+    background: #28a745;
+}
+
+.pl-110{
+    padding-left:110px;
+}
+
+.form-control{
+    width: 80%;
+}
+
+.mt-20{
+    margin-top: 20px;
+}
+
+.iconBtn{
+    padding-right: 40px;
+    margin-top: -35px;
+    float: right;
+}
+
+.teaNum{
+    margin-right: 30px;
+    float: left;
+    padding-top:7px;
+}
+</style>

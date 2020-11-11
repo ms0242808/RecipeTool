@@ -1,0 +1,26 @@
+<div class="mx-auto row justify-content-end" style="margin-top:50px">
+  <div class="col-4 textCenter">
+    <img src="src/img/Logo color 1.png" class="logoImg">
+  </div>
+</div>
+<div class="mx-auto" style="width:600px;margin-top:250px">
+  <div class="row align-items-center">
+    <div class="col">
+      <button type="button" onclick="lbtn('read')" class="loadbtn btn btn-primary btn-lg" style="float:right;background-color:#0081C8; border-radius: 30px;">Load Recipe</button>
+    </div>
+    <div class="col-2" style="text-align: center;"  >
+      <svg width="60px" height="60px" viewBox="0 0 16 16" class="bi bi-slash" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+        <path fill-rule="evenodd" d="M11.354 4.646a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708l6-6a.5.5 0 0 1 .708 0z"/>
+      </svg>
+    </div>
+    <div class="col">
+      <a onclick="lbtn('create')" class="btn btn-primary btn-lg" style="background-color:#2760A3;border-radius: 30px;">Create Recipe</a>
+    </div>
+  </div>
+</div>
+<script>
+  var dir = app.getPath('desktop').toString()+'/DrinkTec/Recipe.csv';
+  if (!fs.existsSync(dir)){
+    $('.loadbtn').prop('disabled','true');
+  }
+</script>
