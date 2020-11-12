@@ -4,6 +4,11 @@
   </div>
 </div>
 <div class="mx-auto" style="width:600px;margin-top:250px">
+  <!-- <div class="row align-items-center" id="holder">
+    <div class="col textCenter">
+      Drop your file here
+    </div>
+  </div> -->
   <div class="row align-items-center">
     <div class="col">
       <button type="button" onclick="lbtn('read')" class="loadbtn btn btn-primary btn-lg" style="float:right;background-color:#0081C8; border-radius: 30px;">Load Recipe</button>
@@ -19,8 +24,20 @@
   </div>
 </div>
 <script>
-  var dir = app.getPath('desktop').toString()+'/DrinkTec/Recipe.csv';
+  var dir = app.getPath('desktop').toString()+'/DrinkTec/Recipe.xlsx'; 
   if (!fs.existsSync(dir)){
-    $('.loadbtn').prop('disabled','true');
+    $('.loadbtn').prop('disabled',true);
   }
+  // document.addEventListener('drop', (e) => {
+  //   e.preventDefault();
+  //   e.stopPropagation();
+
+  //   for (const f of e.dataTransfer.files) {
+  //     console.log('File(s) you dragged here: ', f.path)
+  //   }
+  // });
+  // document.addEventListener('dragover', (e) => {
+  //   e.preventDefault();
+  //   e.stopPropagation();
+  // });
 </script>

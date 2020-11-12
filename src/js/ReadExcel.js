@@ -8,7 +8,7 @@ function setAttributes(el, attrs) {
   }
 }
 
-function readIntoTab(title){
+function readIntoTab(title,currentIce){
   var Excel = require('exceljs');
   // A new Excel Work Book
   var workbook = new Excel.Workbook();
@@ -18,10 +18,8 @@ function readIntoTab(title){
   workbook.xlsx.readFile(dir+"/Recipe.xlsx")//YF Machine
   //workbook.csv.readFile("Recipe.csv")
   .then(function() { 
-      
     workbook.eachSheet((sheet, id) => {
       var myTabDiv = document.getElementById("recipeTab");
-    
       var ul = document.createElement('UL');
       setAttributes(ul,{
           'class':'nav nav-pills mb-3',
@@ -29,20 +27,17 @@ function readIntoTab(title){
           'role':'tablist'
         },
       );
-
       var tabContent = document.createElement('DIV');
       setAttributes(tabContent,{
           'class':'tab-content',
           'id':'pills-tabContent'
         },
       );
-      
       var myTableDiv = document.createElement('DIV');
       var table = document.createElement('TABLE');
-        table.border = '1';
-        var tableBody = document.createElement('TBODY');
-        table.appendChild(tableBody);
-
+      table.border = '1';
+      var tableBody = document.createElement('TBODY');
+      table.appendChild(tableBody);
       sheet.eachRow((row, rowIndex) => {
         const rowSize = sheet.rowCount;
         const colSize = sheet.columnCount;
@@ -60,19 +55,16 @@ function readIntoTab(title){
             //console.log(j+ " - "+ice[j]);
           }
         }
-        
         for(var n = 1; n<=head.length; n++){
           name = sheet.getRow(n).getCell(2).value
           if(ice[n] !== ice[n+1] && ice[n] != null && name == tea){
             console.log(head[n] + " - " +ice[n]);
-
             var tabPane = document.createElement('DIV');
             var tabBody = document.createElement('LI');
             var tr = document.createElement('A');
-            
             tabBody.className = "nav-item";
             ul.appendChild(tabBody);
-            if(ice[n] == "Normal Ice"){
+            if(ice[n] == currentIce){
               setAttributes(tr,{
                   'class':'nav-link active',
                   'aria-selected':'true'
@@ -97,9 +89,10 @@ function readIntoTab(title){
                 'role':'tab',
                 'aria-controls':value,
                 'href':"#pills-"+value,
-                'data-toggle':'pill'
+                'data-toggle':'pill',
+                'onclick':'updateFile()'
               },
-            );
+            );console.log(n);
             tr.textContent = ice[n];
             tabBody.appendChild(tr);
 
@@ -112,11 +105,51 @@ function readIntoTab(title){
             );
             //tabPane.textContent = ice[n]+" ";
             readRecipe(head[n],ice[n]);
-            
             tabContent.appendChild(tabPane);
           }
           myTabDiv.appendChild(ul);
           myTabDiv.appendChild(tabContent);
+        }
+      });
+    });
+  });
+}
+
+function readIntoTable(title,currentIce){
+  var Excel = require('exceljs');
+  // A new Excel Work Book
+  var workbook = new Excel.Workbook();
+  var tea = title;
+  var worksheet = workbook.getWorksheet('Sheet1');
+  var dir = app.getPath('desktop').toString()+'/DrinkTec';
+  workbook.xlsx.readFile(dir+"/Recipe.xlsx")//YF Machine
+  //workbook.csv.readFile("Recipe.csv")
+  .then(function() { 
+    workbook.eachSheet((sheet, id) => {
+      var table = document.createElement('TABLE');
+      table.border = '1';
+      var tableBody = document.createElement('TBODY');
+      table.appendChild(tableBody);
+      sheet.eachRow((row, rowIndex) => {
+        const rowSize = sheet.rowCount;
+        const colSize = sheet.columnCount;
+        var head = new Array();
+        var name;
+        var ice = new Array();
+        for (var j = 2; j <= rowSize; j++) {
+          if(rowIndex == 2){
+            //console.log(j+": "+sheet.getRow(i).getCell(2).value);
+            var title =  sheet.getRow(j).getCell(2).value;
+            var opt = sheet.getRow(j).getCell(4).value;
+            head[j] = title;
+            ice[j] = opt;
+          }
+        }
+        for(var n = 1; n<=head.length; n++){
+          name = sheet.getRow(n).getCell(2).value
+          if(ice[n] !== ice[n+1] && ice[n] != null && name == tea){
+            readRecipe(head[n],ice[n]);
+          }
         }
       });
     });
@@ -219,9 +252,6 @@ function readRecipe(title,ice){
         table.appendChild(tableHead);
         var tableBody = document.createElement('TBODY');
         table.appendChild(tableBody);
-        var large = 0;
-        var regular = 0;
-        var inputValue;
         var inputType;
         sheet.eachRow((row, rowIndex) => {
           const rowSize = sheet.rowCount;

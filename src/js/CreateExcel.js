@@ -131,7 +131,7 @@ function createRecipeFile(){
         // Success Message
         //converToTxt();
         //converToCsv();
-        alert("File Created");
+        //alert("File Created");
     });
 }
 
@@ -178,6 +178,7 @@ function updateRecipe(title){
                     }
                 });
             });
-            alert("File Saved");
+            $('.tab-pane').empty();
+            //alert("File Saved");
     });
 }
