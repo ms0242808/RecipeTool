@@ -71,8 +71,10 @@ function updateFile(){
   $('.spinner').css('display','block');
   setTimeout(function() {
     var curIce = $(".active").text();
-    $('.spinner').css('display','none');
-    readIntoTable(recipe,curIce);
+    setTimeout(function() {
+      $('.spinner').css('display','none');
+      readIntoTable(recipe,curIce);
+    },500);
 	},50);
 }
 
