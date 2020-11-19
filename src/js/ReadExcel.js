@@ -16,7 +16,7 @@ function readIntoTab(title,currentIce){
   var worksheet = workbook.getWorksheet('Sheet1');
   var dir = app.getPath('desktop').toString()+'/DrinkTec';
   workbook.xlsx.readFile(dir+"/Recipe.xlsx")//YF Machine
-  //workbook.csv.readFile("Recipe.csv")
+  //workbook.csv.readFile(dir+"/Recipe.csv")
   .then(function() { 
     workbook.eachSheet((sheet, id) => {
       var myTabDiv = document.getElementById("recipeTab");
@@ -123,7 +123,7 @@ function readIntoTable(title,currentIce){
   var worksheet = workbook.getWorksheet('Sheet1');
   var dir = app.getPath('desktop').toString()+'/DrinkTec';
   workbook.xlsx.readFile(dir+"/Recipe.xlsx")//YF Machine
-  //workbook.csv.readFile("Recipe.csv")
+  //workbook.csv.readFile(dir+"/Recipe.csv")
   .then(function() { 
     workbook.eachSheet((sheet, id) => {
       var table = document.createElement('TABLE');
@@ -163,7 +163,7 @@ function readIntoCard(){
   var dir = app.getPath('desktop').toString()+'/DrinkTec';
   var worksheet = workbook.getWorksheet('Sheet1');
   workbook.xlsx.readFile(dir+"/Recipe.xlsx")//YF Machine
-  //workbook.csv.readFile("Recipe.csv")
+  //workbook.csv.readFile(dir+"/Recipe.csv")
   .then(function() { 
     workbook.eachSheet((sheet, id) => {
       var myTableCard = document.getElementById("cardView");
@@ -235,7 +235,7 @@ function readRecipe(title,ice){
   var dir = app.getPath('desktop').toString()+'/DrinkTec';
   var worksheet = workbook.getWorksheet('Sheet1');
   workbook.xlsx.readFile(dir+"/Recipe.xlsx")//YF Machine
-  //workbook.csv.readFile("Recipe.csv")
+  //workbook.csv.readFile(dir+"/Recipe.csv")
     .then(function() { 
       workbook.eachSheet((sheet, id) => {
         //var myTableDiv = document.getElementById("recipeTable");
@@ -330,7 +330,7 @@ function getCode(title,catg){
   var dir = app.getPath('desktop').toString()+'/DrinkTec';
   var worksheet = workbook.getWorksheet('Sheet1');
   workbook.xlsx.readFile(dir+"/Recipe.xlsx")//YF Machine
-  //workbook.csv.readFile("Recipe.csv")
+  //workbook.csv.readFile(dir+"/Recipe.csv")
     .then(function() { 
       workbook.eachSheet((sheet, id) => {
         var iceOpt = ['Normal Ice','Less Ice','Ice free','Warm','Hot'];

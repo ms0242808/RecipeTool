@@ -1,16 +1,18 @@
-function converToCsv(){
-    fs.rename('Recipe.txt', 'RecipeConverted.csv', (err) => {
+function convertToCsv(){
+    var dir = app.getPath('desktop').toString()+'/DrinkTec';
+    fs.rename(dir+'/Recipe.txt', dir+'/Recipes.csv', (err) => {
         if (err) throw err;
         console.log('Rename complete!');
     });
 }
 
-function converToTxt(){
+function convertToTxt(){
     var iconv = require("iconv-lite");
-    fs.createReadStream("Recipe.csv")
-        .pipe(iconv.decodeStream("utf8"))
-        .pipe(iconv.encodeStream("utf16"))
-        .pipe(fs.createWriteStream("Recipe.txt"));
+    var dir = app.getPath('desktop').toString()+'/DrinkTec';    
+    fs.createReadStream(dir+"/Recipe.txt")
+        .pipe(iconv.decodeStream("UTF-8"))
+        .pipe(iconv.encodeStream("UTF-16"))
+        .pipe(fs.createWriteStream(dir+"/Recipe.csv"));
 }
 
 function createRecipeFile(){
@@ -126,11 +128,11 @@ function createRecipeFile(){
         fs.mkdirSync(dir);
     }
 
-    workbook.xlsx.writeFile(dir+"/Recipe.xlsx",{encoding:'utf8'}) //xlsx {encoding:'utf8'}
+    workbook.xlsx.writeFile(dir+"/Recipe.xlsx",{encoding:'UTF-8'}) //xlsx {encoding:'utf8'}
     .then(function() {
         // Success Message
-        //converToTxt();
-        //converToCsv();
+        //convertToTxt();
+        //convertToCsv();
         //alert("File Created");
     });
 }
@@ -141,8 +143,8 @@ function updateRecipe(title){
     var dir = app.getPath('desktop').toString()+'/DrinkTec';
     //workbook.csv.readFile("My First txt.csv");
     var worksheet = workbook.getWorksheet('Sheet1');
-    //workbook.csv.readFile("Recipe.csv") //xlsx
-    workbook.xlsx.readFile(dir+"/Recipe.xlsx")//YF Machine.xlsx
+    workbook.xlsx.readFile("Recipe.xlsx") //xlsx
+    //workbook.csv.readFile(dir+"/Recipe.csv")//YF Machine.xlsx
         .then(function() {
             workbook.eachSheet((sheet, id) => {
                 var iceOpt = ['Normal Ice','Less Ice','Ice free','Warm','Hot'];
@@ -173,8 +175,14 @@ function updateRecipe(title){
                             }
                         }
                         row.commit();
-                        workbook.xlsx.writeFile(dir+"/Recipe.xlsx");
+                        workbook.xlsx.writeFile(dir+"/Recipe.xlsx",{encoding:'UTF-8'}) //xlsx {encoding:'utf8'}
                         // workbook.csv.writeFile("Recipe.csv");
+                        .then(function() {
+                            // Success Message
+                            //convertToTxt();
+                            //convertToCsv();
+                            //alert("File Created");
+                        });
                     }
                 });
             });
