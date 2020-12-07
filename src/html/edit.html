@@ -66,16 +66,22 @@ $(document).ready(function(){
   AddShake();
 });
 
-function updateFile(){
-  updateRecipe(recipe);
+async function updateFile(){
   $('.spinner').css('display','block');
-  setTimeout(function() {
-    var curIce = $(".active").text();
-    setTimeout(function() {
-      $('.spinner').css('display','none');
-      readIntoTable(recipe,curIce);
-    },500);
-	},50);
+  await updateRecipe(recipe);
+  
+  var curIce = $(".active").text();
+  $('.spinner').css('display','none');
+  readIntoTable(recipe,curIce);
+
+  // $('.spinner').css('display','block');
+  // setTimeout(function() {
+  //   var curIce = $(".active").text();
+  //   setTimeout(function() {
+  //     $('.spinner').css('display','none');
+  //     readIntoTable(recipe,curIce);
+  //   },500);
+	// },50);
 }
 
 var x = 1;      

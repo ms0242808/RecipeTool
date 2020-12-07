@@ -9,10 +9,10 @@ function convertToCsv(){
 function convertToTxt(){
     var iconv = require("iconv-lite");
     var dir = app.getPath('desktop').toString()+'/DrinkTec';    
-    fs.createReadStream(dir+"/Recipe.txt")
+    fs.createReadStream(dir+"/Recipe.xlsx")
         .pipe(iconv.decodeStream("UTF-8"))
         .pipe(iconv.encodeStream("UTF-16"))
-        .pipe(fs.createWriteStream(dir+"/Recipe.csv"));
+        .pipe(fs.createWriteStream(dir+"/Recipe.txt"));
 }
 
 function createRecipeFile(){
@@ -131,19 +131,19 @@ function createRecipeFile(){
     workbook.xlsx.writeFile(dir+"/Recipe.xlsx",{encoding:'UTF-8'}) //xlsx {encoding:'utf8'}
     .then(function() {
         // Success Message
-        //convertToTxt();
-        //convertToCsv();
+        convertToTxt();
+        convertToCsv();
         //alert("File Created");
     });
 }
 
-function updateRecipe(title){
+async function updateRecipe(title){
     var Excel = require('exceljs');
     var workbook = new Excel.Workbook();
     var dir = app.getPath('desktop').toString()+'/DrinkTec';
     //workbook.csv.readFile("My First txt.csv");
     var worksheet = workbook.getWorksheet('Sheet1');
-    workbook.xlsx.readFile("Recipe.xlsx") //xlsx
+    workbook.xlsx.readFile(dir+"/Recipe.xlsx") //xlsx
     //workbook.csv.readFile(dir+"/Recipe.csv")//YF Machine.xlsx
         .then(function() {
             workbook.eachSheet((sheet, id) => {
@@ -181,7 +181,7 @@ function updateRecipe(title){
                             // Success Message
                             //convertToTxt();
                             //convertToCsv();
-                            //alert("File Created");
+                            //alert("File Saved");
                         });
                     }
                 });
